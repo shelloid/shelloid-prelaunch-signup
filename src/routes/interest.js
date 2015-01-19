@@ -37,14 +37,13 @@ exports.index = function(req, res, ctx){
 				if (err && err.code && err.code.indexOf("ER_DUP_ENTRY") >= 0) {
 					res.send({msg: "User already exists.", status: 500});
 				}else{
-					res.send({msg: err.msg, status: 500});
+					res.send({msg: err.message, status: 500});
 				}
 			});
         }
 	})
 	.error(function (err) {
-		console.log("stack", err.stack);
-		res.send({msg: err.msg, status: 500});
+		res.send({msg: err.message, status: 500});
 	})
 	.execute({transaction: true});
 }

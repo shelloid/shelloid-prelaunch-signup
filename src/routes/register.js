@@ -17,7 +17,7 @@ exports.index = function(req, res, ctx){
     var email, id, process_code;
 	var db = req.db("invitedb");
     db
-	.query(["SELECT id, email FROM interested_users WHERE invite_code = ?", [req.query.id]])
+	.query("SELECT id, email FROM interested_users WHERE invite_code = ?", [req.query.id])
 	.success(function (rows) {
 		if (rows.length <= 0) {
 			res.status(500).render('error', {message: "Invalid Registration code",error: null});
@@ -36,7 +36,7 @@ exports.index = function(req, res, ctx){
 	})
 	.error(function (err) {
 		console.log(err);
-		res.status(500).render('error', {message: err.message, error: err});
+		res.status(500).render('error', {message: err.message});
 	})
 	.execute({transaction: true});
 };
@@ -56,13 +56,13 @@ function sendEmail(email, url, res, ctx){
 	var seq = sh.seq();
 	
 	seq
-	.step(function(done){
-		emailTemplates(templatesDir, done);
+	.step(function(){
+		emailTemplates(templatesDir, seq.next);
 	})
-	.step(function(template, done){
-		template('refCodeForm', locals, done);
+	.step(function(template){
+		template('refCodeForm', locals, seq.next);
 	})
-	.step(function(html, text, done){
+	.step(function(html, text){
 		var mailgun = new Mailgun({apiKey: ctx.config.app.mailgun.apiKey, domain: ctx.config.app.mailgun.domain});
 		var data = {
 			from: ctx.config.app.mailgun.fromAddress,
@@ -71,11 +71,11 @@ function sendEmail(email, url, res, ctx){
 			html: html,
 			text: text
 		};
-		mailgun.messages().send(data, done);
+		mailgun.messages().send(data,seq.next);
 	})
-	.step(function (body, done) {
+	.step(function (body) {
 		res.status(200).render('register', {url: url});
-		done();
+		seq.next();
 	})
 	.error(function(err){
 		res.send({msg: "We can't sent email at the moment. Please try again later", status: 500});

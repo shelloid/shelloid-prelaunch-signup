@@ -54,8 +54,4 @@ jQuery(function($) {
 		}, 500);
 	});	
 
-	//Pretty Photo
-	$("a[rel^='prettyPhoto']").prettyPhoto({
-		social_tools: false
-	});	
 });
