@@ -72,7 +72,7 @@ function sendEmail(req, res, regId, ctx){
         to: req.body.email,
         subject: ctx.config.app.emailSubject,
         name: req.body.name,
-        url: ctx.config.app.baseUrl + "/register?id=" + regId
+        url: ctx.config.baseUrl + "/register?id=" + regId
     };
 	
 	var seq = sh.seq();

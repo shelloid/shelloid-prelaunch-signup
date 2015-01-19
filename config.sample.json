@@ -2,6 +2,8 @@
 	"enableCluster": false,
 	"theme": "shelloid",
 	"port" : 8080,
+	"domain": "localhost",
+	"proto" : "http",	
 	"dataDir" : "data",
 	"auth" : {
 		"facebook": {

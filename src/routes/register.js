@@ -32,7 +32,7 @@ exports.index = function(req, res, ctx){
 				[process_code, email] ]
 	})
 	.success(function (rows) {
-		sendEmail(email, ctx.config.app.baseUrl + "?id=" + process_code, res, ctx);
+		sendEmail(email, ctx.config.baseUrl + "?id=" + process_code, res, ctx);
 	})
 	.error(function (err) {
 		console.log(err);
