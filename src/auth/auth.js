@@ -21,6 +21,7 @@ exports.auth = function(req, done, err,ctx){
   @success     "/provider/signup"
 */
 exports.googleAuth  = function(req, done, err){
+
 	if(req.profile.emails && req.profile.emails.length > 0){
 		done({username: req.profile.emails[0].value, 
 				fullname: req.profile.displayName, roles:["guest"]});

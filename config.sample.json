@@ -10,9 +10,9 @@
 			"appID": "",
 			"appSecret": ""
 		},
-		"twitter":{
-			"consumerKey": null,
-			"consumerSecret": null
+		"google":{
+			"clientID": null,
+			"clientSecret": null
 		}
 	},
 	"session":{

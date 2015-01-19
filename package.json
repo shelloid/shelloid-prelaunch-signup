@@ -18,6 +18,7 @@
         "redis": "0.12.1",
         "passport-local": "*",
         "passport-google": "*",
-        "passport-facebook": "*"
+        "passport-facebook": "*",
+        "passport-google-oauth": "*"
     }
 }
