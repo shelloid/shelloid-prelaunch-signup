@@ -5,7 +5,7 @@
 
 
 /**
-
+  @roles ["admin"]
 */
 exports.index = function(req, res, ctx){
 	var db = req.db("invitedb");

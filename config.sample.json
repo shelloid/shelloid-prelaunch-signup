@@ -4,7 +4,14 @@
 	"port" : 8080,
 	"dataDir" : "data",
 	"auth" : {
-		"successRedirect" : "/home.html"
+		"facebook": {
+			"appID": "",
+			"appSecret": ""
+		},
+		"twitter":{
+			"consumerKey": null,
+			"consumerSecret": null
+		}
 	},
 	"session":{
 		"store" : false,

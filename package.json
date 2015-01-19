@@ -17,6 +17,7 @@
         "winston": "*",
         "redis": "0.12.1",
         "passport-local": "*",
-        "passport-google": "*"
+        "passport-google": "*",
+        "passport-facebook": "*"
     }
 }

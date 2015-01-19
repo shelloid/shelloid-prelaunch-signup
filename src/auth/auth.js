@@ -9,7 +9,7 @@ exports.auth = function(req, done, err,ctx){
 	if(ctx.config.app.adminPass !== "" &&
 	   req.username == ctx.config.app.adminUser && 
 	   req.password == ctx.config.app.adminPass){
-		done({username: "admin"});
+		done({username: "admin", roles: ["admin"]});
 	}else{
 		err.app("Invalid authentication attempt: " + req.username);
 	}
@@ -17,14 +17,30 @@ exports.auth = function(req, done, err,ctx){
 
 /**
   @auth 	  "google"
-  @pathPrefix "/login"
+  @pathPrefix "/signup"
+  @success     "/provider/signup"
 */
-exports.providerAuth  = function(req, done, err){
+exports.googleAuth  = function(req, done, err){
 	if(req.profile.emails && req.profile.emails.length > 0){
-		console.log("Successfully authenticated: " + req.profile.emails[0].value);
-		done({username: req.profile.emails[0].value});
+		done({username: req.profile.emails[0].value, 
+				fullname: req.profile.displayName, roles:["guest"]});
 	}else{
-		err("Invalid authentication attempt: " + req.profile.emails[0].value);
+		err("Email not available.");
+	}
+}
+
+/**
+  @ignore
+  @auth 	  "facebook"
+  @pathPrefix "/signup"
+  @success     "/provider/signup"
+*/
+exports.facebookAuth  = function(req, done, err){
+	if(req.profile){
+		done({username: req.profile.username + "@facebook.com" , 
+				fullname: req.profile.displayName, roles:["guest"]});
+	}else{
+		err("Email not available.");
 	}
 }
 

@@ -35,9 +35,8 @@ function getParameterByName(name) {
 	return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-function submitUserInfo() {
-	var name = $('#username').val();
-	var email = $('#email').val();
+function submitUserInfo(email, name) {
+	$("#dialog_email").html(email);
 	if (name == "" || email == "" || !ValidateEmail(email)) {
 		showToast("Please input correct email and username")
 		return;
@@ -61,9 +60,33 @@ function submitUserInfo() {
 $(function () {
 	$("#go").click(function (e) {
 		e.preventDefault();
-		submitUserInfo()
+		submitUserInfo($("#email").val(), $("#username").val());
 	});
+	var gglink = $("#gglink");
+	if(gglink.length > 0){
+		$("#gglink").click(function(){
+			$("#ggForm").submit();
+		});
+	}
+	var fblink = $("#fblink");
+	if(fblink.length > 0){
+		$("#fblink").click(function(){
+			$("#fbForm").submit();
+		});
+	}
+	
+	var email = getParameterByName("email");
+	var username = getParameterByName("name");
+	var provider = getParameterByName("provider");
+	if(email && email.trim() !== ""){
+		email = email.trim();
+		username = username.trim();
+		submitUserInfo(email, username);
+	}else if(provider && provider != ""){
+		$( "#no_email_dialog" ).dialog( "open" );						
+	}	
 });
+
 function ValidateEmail(mail)
 {
 	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
