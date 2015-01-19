@@ -1,0 +1,42 @@
+{
+	"enableCluster": false,
+	"theme": "shelloid",
+	"port" : 8080,
+	"dataDir" : "data",
+	"auth" : {
+		"successRedirect" : "/home.html"
+	},
+	"session":{
+		"store" : false,
+		"secret": "key1234",
+		"options":{
+			"prefix": "shelloid_vls"
+		}
+	},
+	"databases":{
+		"cache" : {
+			"type": "redis",
+			"password": "",
+			"host" : "localhost"
+		},
+		"invitedb" : {
+			"type": "mysql",
+			"user": "root",
+			"password": "",
+			"host" : "localhost",
+			"database": "shelloid_vls",
+			"maxConnections": 20
+		}		
+	},
+	"app":{
+		"baseUrl" : "http://localhost:8080",
+		"hashSecret": "secret123",
+		"mailgun":{
+			"apiKey": "",
+			"domain": "",
+			"fromAddress": ""		
+		},
+		"emailSubject": ""
+	}
+}
+

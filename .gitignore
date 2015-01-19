@@ -2,6 +2,7 @@
 logs
 *.log
 config.prod.json
+config.json
 # Runtime data
 pids
 *.pid
@@ -27,4 +28,3 @@ build/Release
 node_modules
 .idea
 nbproject
-config.json
