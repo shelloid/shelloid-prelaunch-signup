@@ -6,7 +6,8 @@
 var emailTemplates = require('email-templates'),
     Mailgun = require('mailgun-js'),
     path = require('path'),
-    md5 = require('MD5');
+    md5 = require('MD5'),
+	moment = sh.require("moment");
 
 var templatesDir = path.resolve(sh.appCtx.basePath, 'src/email-templates');
 
@@ -17,11 +18,29 @@ exports.index = function(req, res, ctx){
     var regId = md5(req.body.email + ":" + ctx.config.app.hashSecret);
 	var db = req.db("invitedb");
     db
-    .query("SELECT invite_code, validated FROM interested_users WHERE email = ?", [req.body.email])
+    .query("SELECT invite_code, validated, regd_at FROM interested_users WHERE email = ?", [req.body.email])
     .success(function (rows) {
         if (rows.length > 0){
             if (rows[0].validated == 0) {
-                sendEmail(req, res, rows[0].invite_code, ctx);
+				var now = moment();
+				var regd = moment(rows[0].regd_at);
+				var d = 3*60 - now.diff(regd, 'seconds');
+
+				if(d <= 0){
+					sendEmail(req, res, rows[0].invite_code, ctx);
+					db
+					.query(function(){						
+					   return ["UPDATE interested_users SET regd_at=CURRENT_TIMESTAMP() WHERE email = ?",
+						  	  [req.body.email]];
+					})
+					.error(function(err){
+						console.log("Updating regd_at failed for: " + req.body.email);
+					});
+					
+				}else{
+					res.send({msg: "Email already sent. Please wait for " 
+					          + Math.floor(d/60) + " min " + (d%60) + " seconds before retrying.", status: 500});
+				}
             } else {
                res.send({msg: "User already registered and confirmed.", status: 500});
             }

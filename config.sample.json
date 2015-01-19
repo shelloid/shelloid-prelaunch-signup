@@ -32,7 +32,8 @@
 			"password": "",
 			"host" : "localhost",
 			"database": "shelloid_vls",
-			"maxConnections": 20
+			"maxConnections": 20,
+			"timezone": "local"
 		}		
 	},
 	"app":{
