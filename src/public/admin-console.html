@@ -19,7 +19,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="js/toast/jquery.toast.css" rel="stylesheet">
-	<link href="js/jquery.dataTables.min.css" rel="stylesheet">
+	<link href="css/jquery.dataTables.min.css" rel="stylesheet">
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
     <script src="js/bootstrap.min.js"></script>
@@ -139,7 +139,9 @@
 <!--/head-->
 <body class="grad">
 <center>
-    <img src="images/shelloid-logo-transparent.png" style="vertical-align:bottom"> <span style="vertical-align:bottom"><font size="+3">Admin Console</font></span>
+    <img src="images/shelloid-logo-transparent.png" style="vertical-align:bottom"> <span style="vertical-align:bottom"><font size="+2">Admin Console</font> &nbsp;&nbsp;&nbsp;&nbsp;
+	<form method="post" style="display:inline" action="/admin/logout">
+	<input type="submit" value="logout"></form></span>
 </center>
 
 
@@ -150,7 +152,7 @@
         <div class="tab-content" style="padding-bottom: 30px; min-height: 300px">
             <div class="tab-pane active" id="users">
                 <div class="container" id="users_tab">
-				<table id="users_table" class="display" cellspacing="0" width="100%">
+				<table id="users_table" class="hover" cellspacing="5px" width="100%">
 						<thead>
 							<tr>
 								<th>Email</th>
@@ -160,8 +162,10 @@
 								<th>Who invited?</th>
 							</tr>
 						</thead>
+						<tbody>
+						</tbody>
 				 
-						<tfoot>
+	<!--					<tfoot>
 							<tr>
 								<th>Email</th>
 								<th>Name</th>
@@ -169,7 +173,7 @@
 								<th>Verified?</th>
 								<th>Who invited?</th>
 							</tr>
-						</tfoot>
+						</tfoot>-->
 					</table>				
                 </div>
             </div>
