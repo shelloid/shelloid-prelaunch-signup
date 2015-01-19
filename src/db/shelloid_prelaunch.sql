@@ -19,8 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `shelloid_vls`
 --
-CREATE DATABASE IF NOT EXISTS `shelloid_vls` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `shelloid_vls`;
+CREATE DATABASE IF NOT EXISTS `shelloid_prelaunch` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `shelloid_prelaunch`;
 
 -- --------------------------------------------------------
 

@@ -10,7 +10,7 @@
 		"store" : false,
 		"secret": "key1234",
 		"options":{
-			"prefix": "shelloid_vls"
+			"prefix": "shelloid_prelaunch"
 		}
 	},
 	"databases":{
