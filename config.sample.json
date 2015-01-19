@@ -29,6 +29,8 @@
 		}		
 	},
 	"app":{
+		"adminUser": "admin",
+		"adminPass" : "";
 		"baseUrl" : "http://localhost:8080",
 		"hashSecret": "secret123",
 		"mailgun":{

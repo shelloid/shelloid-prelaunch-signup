@@ -13,18 +13,19 @@
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-    <title>Shelloid Admin Login</title>
+    <title>Shelloid Console</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="js/toast/jquery.toast.css" rel="stylesheet">
-
+	<link href="js/jquery.dataTables.min.css" rel="stylesheet">
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/toast/jquery.toast.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -137,30 +138,63 @@
 </head>
 <!--/head-->
 <body class="grad">
-<br/>
 <center>
-
-    <!--<font style="color:#3f6bb0;font-size:34pt;text-shadow: 2px 2px 8px #3f6bb0;font-weight:500">Shelloid</font><br/>
-    <div style="font-size:34pt;font-weight:500;color:#3f6bb0;text-shadow: 0px 2px 3px #4f7bc0;">Shelloid</div>-->
-    <img src="images/shelloid-logo-transparent.png">
+    <img src="images/shelloid-logo-transparent.png" style="vertical-align:bottom"> <span style="vertical-align:bottom"><font size="+3">Admin Console</font></span>
 </center>
+
+
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#users" data-toggle="tab" id="usersTabLink">Users</a></li>
+        </ul>
+        <div class="tab-content" style="padding-bottom: 30px; min-height: 300px">
+            <div class="tab-pane active" id="users">
+                <div class="container" id="users_tab">
+				<table id="users_table" class="display" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th>Email</th>
+								<th>Name</th>
+								<th>Registered at</th>
+								<th>Verified?</th>
+								<th>Who invited?</th>
+							</tr>
+						</thead>
+				 
+						<tfoot>
+							<tr>
+								<th>Email</th>
+								<th>Name</th>
+								<th>Registered at</th>
+								<th>Verified?</th>
+								<th>Who invited?</th>
+							</tr>
+						</tfoot>
+					</table>				
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 <br/>
 
-<div style="color:black;text-align:center">
-    <h3>
-        Shelloid Pre-launch Admin Login
-    </h3>
 	<br/>
-	<br/>
-	<br/>
-	<form method="post" action="/admin/login">
-	<input type="text" placeholder="User name" 
-	style="font-size:14pt; height:2.5em;border-radius:5px;width:20em;margin-bottom:1ex" id="username" name="username"> 
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
-	<input type="password" placeholder="Password" 
-	style="font-size:14pt; height:2.5em;border-radius:5px;width:20em;margin-bottom:1ex" id="password" name="password">								
-	<button id="login" style="font-size:14pt; height:2.5em;border-radius:5px;margin-bottom:1ex">Login</button>
-	</form>
 <br/>
 <br/>
 <br/>
@@ -168,21 +202,13 @@
 <br/>
 <br/>
 <br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+<script>
+var $ = jQuery;
+$(document).ready(function() {
+    $('#users_table').dataTable( {
+        "ajax": "/admin/users"
+    } );
+} );
+</script>
 </body>
 </html>
