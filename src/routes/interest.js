@@ -13,6 +13,7 @@ var templatesDir = path.resolve(sh.appCtx.basePath, 'src/email-templates');
 
 /**
 	@noauth
+	@interface "/interest"
 */
 exports.index = function(req, res, ctx){
     var regId = md5(req.body.email + ":" + ctx.config.app.hashSecret);
