@@ -33,15 +33,14 @@
 			"user": "root",
 			"password": "",
 			"host" : "localhost",
-			"database": "shelloid_vls",
+			"database": "shelloid_prelaunch",
 			"maxConnections": 20,
 			"timezone": "local"
 		}		
 	},
 	"app":{
 		"adminUser": "admin",
-		"adminPass" : "";
-		"baseUrl" : "http://localhost:8080",
+		"adminPass" : "",
 		"hashSecret": "secret123",
 		"mailgun":{
 			"apiKey": "",

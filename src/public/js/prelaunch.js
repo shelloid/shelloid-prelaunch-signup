@@ -78,14 +78,23 @@ $(function () {
 	var email = getParameterByName("email");
 	var username = getParameterByName("name");
 	var provider = getParameterByName("provider");
-	if(email && email.trim() !== ""){
+	if(email && email.indexOf("@") > 0){
 		email = email.trim();
 		username = username.trim();
+		if(username == ""){
+			var k = email.indexOf("@");
+			username = firstCaps(email.substring(0,k));
+		}
 		submitUserInfo(email, username);
 	}else if(provider && provider != ""){
 		$( "#no_email_dialog" ).dialog( "open" );						
 	}	
 });
+
+function firstCaps(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 function ValidateEmail(mail)
 {
