@@ -114,7 +114,7 @@ jQuery(document).tooltip();
 				<div class="container" >
 					<table id="header">
 						<tr>
-							<td id="logo" colspan="2"><span class='wsite-logo' style="vertical-align:bottom;text-transform: none;font-weight:normal;font-style:normal"><a href='index.html'><img src='images/shelloid-logo-transparent.png' style="vertical-align:bottom"/></a>
+							<td id="logo" colspan="2"><span class='wsite-logo' style="vertical-align:bottom;text-transform: none;font-weight:normal;font-style:normal"><a href='http://shelloid.com'><img src='images/shelloid-logo-transparent.png' style="vertical-align:bottom"/><span id="demo" style="font-size:11pt;font-weight:normal"></span></a>
 							</span>
 							</td>
 							<!--<td id="header-right">
@@ -156,7 +156,7 @@ jQuery(document).tooltip();
 	<!--<span style="font-size:26pt" class="link"><i id="fblink" class="fa fa-facebook-square"></i></span> or-->
 	<span style="font-size:26pt" class="link"><i id="gglink" class="fa fa-google-plus-square"></i></span>
 	<hr />
-	<span style="font-size:11pt">Only supports applications built using the <a href="http://shelloid.org" target="_new">Shelloid</a> open source application server.</span>
+	<span style="font-size:14pt">Only supports applications built using the <a href="http://shelloid.org" target="_new">Shelloid</a> open source application server.</span>
 	<form style="visibility:hidden" method="post" action="/signup/google" id="ggForm">
 	</form>
 	<form style="visibility:hidden" method="post" action="/signup/facebook" id="fbForm">
@@ -259,8 +259,11 @@ $(function(){
 		  },
 		  width: "30em"
 	});
-	
+	if(location.href.indexOf("shelloid.com") < 0){
+		$("#demo").html("DEMO");
+	}
 });
+
 </script>
 
 </body>
