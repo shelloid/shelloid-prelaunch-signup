@@ -1,0 +1,54 @@
+{
+	"enableCluster": false,
+	"theme": "shelloid",
+	"port" : 8080,
+	"domain": "localhost",
+	"proto" : "http",	
+	"dataDir" : "data",
+	"auth" : {
+		"facebook": {
+			"appID": null,
+			"appSecret": null
+		},
+		"google":{
+			 "ignore" : true,
+			"clientID": null,
+			"clientSecret": null
+		}
+	},
+	"session":{
+		"store" : false,
+		"secret": "key1234",
+		"options":{
+			"prefix": "shelloid_prelaunch"
+		}
+	},
+	"databases":{
+		"cache" : {
+			"type": "redis",
+			"password": "",
+			"host" : "localhost"
+		},
+		"invitedb" : {
+			"type": "mysql",
+			"user": "root",
+			"password": "",
+			"host" : "localhost",
+			"database": "shelloid_prelaunch",
+			"maxConnections": 20,
+			"timezone": "local"
+		}		
+	},
+	"app":{
+		"adminUser": "admin",
+		"adminPass" : "",
+		"hashSecret": "secret123",
+		"mailgun":{
+			"apiKey": "",
+			"domain": "",
+			"fromAddress": ""		
+		},
+		"emailSubject": ""
+	}
+}
+
