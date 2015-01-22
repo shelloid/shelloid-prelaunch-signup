@@ -41,7 +41,8 @@ function submitUserInfo(email, name) {
 		showToast("Please input correct email and username")
 		return;
 	} else {
-		$.post("/interest", {name: name, email: email, who_invited: getParameterByName("id")}, function (resp) {
+		var whoInvited = $.cookie("who-invited");
+		$.post("/interest", {name: name, email: email, who_invited: whoInvited}, function (resp) {
 			if (resp.status == 200) {
 				$("#username").val("");
 				$("#email").val("");
@@ -75,6 +76,13 @@ $(function () {
 		});
 	}
 	
+	var whoInvited = getParameterByName("id");
+	if(!whoInvited){
+		$.removeCookie("who-invited");
+	}else
+	if(whoInvited != "reuse"){
+		$.cookie("who-invited", whoInvited);
+	}
 	var email = getParameterByName("email");
 	var username = getParameterByName("name");
 	var provider = getParameterByName("provider");
