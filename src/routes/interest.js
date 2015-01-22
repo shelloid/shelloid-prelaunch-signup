@@ -36,7 +36,7 @@ exports.index = function(req, res, ctx){
 				if(d <= 0){
 					sendEmail(req, res, rows[0].invite_code, ctx);
 					db
-					.updateInterested([req.body.email])
+					.updateInterested(function(){return [req.body.email];})
 					.error(function(err){
 						console.log("Updating regd_at failed for: " + req.body.email);
 					});
