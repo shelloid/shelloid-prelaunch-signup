@@ -14,12 +14,18 @@ var templatesDir = path.resolve(sh.appCtx.basePath, 'src/email-templates');
 /**
 	@noauth
 	@interface "/interest"
+	@sql.selectInvited SELECT invite_code, validated, regd_at FROM
+							  interested_users WHERE email = ? 
+    @sql.updateInterested UPDATE interested_users SET regd_at=CURRENT_TIMESTAMP()
+						  WHERE email = ?								
+	@sql.insertInterested INSERT INTO interested_users (email, name, invite_code,
+							who_invited) VALUES (?,?, ?, ?)					
 */
 exports.index = function(req, res, ctx){
     var regId = md5(req.body.email + ":" + ctx.config.app.hashSecret);
 	var db = req.db("invitedb");
     db
-    .query("SELECT invite_code, validated, regd_at FROM interested_users WHERE email = ?", [req.body.email])
+    .selectInvited([req.body.email])
     .success(function (rows) {
         if (rows.length > 0){
             if (rows[0].validated == 0) {
@@ -30,10 +36,7 @@ exports.index = function(req, res, ctx){
 				if(d <= 0){
 					sendEmail(req, res, rows[0].invite_code, ctx);
 					db
-					.query(function(){						
-					   return ["UPDATE interested_users SET regd_at=CURRENT_TIMESTAMP() WHERE email = ?",
-						  	  [req.body.email]];
-					})
+					.updateInterested([req.body.email])
 					.error(function(err){
 						console.log("Updating regd_at failed for: " + req.body.email);
 					});
@@ -47,8 +50,8 @@ exports.index = function(req, res, ctx){
             }
         } else {
             db
-			.query(function (){
-				return 	["INSERT INTO interested_users (email, name, invite_code, who_invited) VALUES (?,?, ?, ?)",	[req.body.email, req.body.name, regId, req.body.who_invited] ];
+			.insertInterested(function(){
+				return [req.body.email, req.body.name, regId, req.body.who_invited];
 			})
 			.success(function (rows) {
 				sendEmail(req, res, regId, ctx);

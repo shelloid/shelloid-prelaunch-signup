@@ -20,7 +20,7 @@ function exec(done){
 	  req.route();
 	})
 	.success(function(req, res){
-	   //assert(res.body.friends.indexOf(req.prev.body.friendid) >= 0);
+	   assert(res.body.friends.indexOf(req.prev.body.friendid) >= 0);
 	})
 	.finally(function(){
 		console.log("Sequence 1 done");

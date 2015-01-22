@@ -12,12 +12,16 @@ var templatesDir = path.resolve(sh.appCtx.basePath, 'src/email-templates');
 
 /**
 	@noauth
+	@sql.selectInterested SELECT id, email FROM interested_users 
+							WHERE invite_code = ?
+    @sql.updateInterested UPDATE interested_users 
+						SET validated = 1, ref_code = ? WHERE email = ?
 */
 exports.index = function(req, res, ctx){
     var email, id, process_code;
 	var db = req.db("invitedb");
     db
-	.query("SELECT id, email FROM interested_users WHERE invite_code = ?", [req.query.id])
+	.selectInterested([req.query.id])
 	.success(function (rows) {
 		if (rows.length <= 0) {
 			res.status(500).render('error', {message: "Invalid Registration code",error: null});
@@ -27,9 +31,8 @@ exports.index = function(req, res, ctx){
 			process_code = process(id);
 		}
 	})
-	.query(function () {
-		return ["UPDATE interested_users SET validated = 1, ref_code = ? WHERE email = ?", 
-				[process_code, email] ]
+	.updateInterested(function () {
+		return [process_code, email];
 	})
 	.success(function (rows) {
 		sendEmail(email, ctx.config.baseUrl + "?id=" + process_code, res, ctx);

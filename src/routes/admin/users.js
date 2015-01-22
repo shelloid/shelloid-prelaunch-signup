@@ -7,13 +7,18 @@
 /**
   @roles ["admin"]
 */
-exports.index = function(req, res, ctx){
+exports.index = listUsers;
+
+/**
+  @sql.selectInvited SELECT a.email email, a.name name, a.regd_at regd_at,
+							a.validated validated, b.email who_invited 
+							FROM interested_users a LEFT JOIN interested_users b
+							ON b.ref_code = a.who_invited 
+*/
+function listUsers(req, res, ctx){
 	var db = req.db("invitedb");
     db
-    .query("SELECT a.email email, a.name name, a.regd_at regd_at, a.validated validated, " + 
-	       "b.email who_invited " + 
-	       "FROM interested_users a LEFT JOIN interested_users b ON b.ref_code = a.who_invited", 
-		   [])
+    .selectInvited([])
     .success(function (rows) {
 		var data = [];
 		for(var i=0;i<rows.length;i++){
@@ -25,4 +30,3 @@ exports.index = function(req, res, ctx){
 	})
 	.execute();
 }
-
