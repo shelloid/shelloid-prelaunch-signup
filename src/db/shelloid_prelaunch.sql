@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `interested_users` (
   `invite_code` varchar(64) NOT NULL,
   `validated` tinyint(1) NOT NULL DEFAULT '0',
   `ref_code` varchar(20) NOT NULL,
-  `who_invited` varchar(20) NOT NULL,
+  `who_invited` varchar(20),
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
