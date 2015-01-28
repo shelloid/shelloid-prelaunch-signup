@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Simple and secure web application server.</title>
-<meta name='description' content='Operational Log Intelligence for Shelloid web application server.' />
-<meta name='keywords' content='log management, log intelligence, application log, analytics, web services, Node.JS, web application, application server' />
+<title>Shelloid - Open source Node.js application server with open extensible architecture.</title>
+<meta name='description' content='Shelloid offers a cloud-ready Node.js application stack with open extensible architecture.' />
+<meta name='keywords' content='log management, log intelligence, application log, analytics, web services, Node.JS, web application, remote access, application server' />
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />    
@@ -68,6 +68,9 @@
 	cursor: pointer
 }
 </style>
+<script>
+</script>
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 <script><!--
@@ -137,6 +140,9 @@ a.mylink:hover{
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <style>
 .link {cursor:pointer; cursor:hand;}
+.mybtn:hover {
+	background-color: #008082 !important;
+}
 </style>
 <script>
 jQuery(document).tooltip();
@@ -177,10 +183,15 @@ jQuery(document).tooltip();
 							<div class="landing-banner-inner">
 				<p><span class='wsite-text wsite-headline-paragraph' style="text-decoration:none;color:white;font-style:normal">								<font size="6">
 								
-Boost your development productivity with our cloud-augmented Node.js application stack.
+Boost your development productivity with our 
+<a style="text-decoration:none" class="udot"
+title="Shelloid goes beyond merely being open source. Shelloid has a open architecture created from ground up, allowing you easily write extensions that can modify the behaviour of the engine to suit your needs. Many of Shelloid's  built-in features are themselves built as extensions, leading to a relatively small and robust core.">open, extensible</a>
+Node.js application stack.
 								</font></span>
 								<div style="font-size:16pt;color:white">
-<a style="text-decoration:none" href="http://shelloid.org" class="udot" target="_new" title="Shelloid application server is open sourced under LGPL license, allowing you to run your commercial closed source applications on the top of it. Click to visit the community site.">Open source</a> application server.
+<a style="text-decoration:none" href="http://shelloid.org" class="udot" target="_new" title="Shelloid application server is open sourced under LGPL license, allowing you to run your commercial closed source applications on the top of it. Click to visit the community site.">Open source</a> application server with an 
+<a style="text-decoration:none" class="udot" 
+title="Shelloid goes beyond merely being open source. Shelloid has a open architecture created from ground up, allowing you easily write extensions that can modify the behaviour of the engine to suit your needs. Many of Shelloid's  built-in features are themselves built as extensions, leading to a relatively small and robust core engine.">open, extensible architecture</a>.
 
 Vital operational insight through our 
 <span class="udot" title="Provides a gold mine of real-time operational intelligence with no programmer effort - from tracking down slow queries to understanding most frequently used application features.">log intelligence service</span>.
@@ -198,8 +209,8 @@ Secure public access to your local instances from anywhere through our
 								<input type="text" placeholder="Your name" 
 								style="font-size:14pt; height:2.5em;border-radius:5px;width:20em" id="username">								
 								<div style="text-align:left;">
-<a id="go" class="wsite-button wsite-button-large wsite-button-normal" href="javascript:;" style="margin-top:-1em">
-<span class="wsite-button-inner"><span style='text-decoration:none; font-style:normal; font-weight:400; color:rgb(255, 255, 255); '>Sign me up!</span></span>
+<a id="go" class="wsite-button wsite-button-large wsite-button-normal mybtn" href="javascript:;" style="margin-top:-1em">
+<span class="wsite-button-inner mybtn"><span style='text-decoration:none; font-style:normal; font-weight:400; color:rgb(255, 255, 255); ' class="mybtn">Sign me up!</span></span>
 </a>
 <div>
 	<span class="wsite-text" style="color:white;font-size:20pt">Or, sign in with
