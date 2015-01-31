@@ -19,7 +19,7 @@ var templatesDir = path.resolve(sh.appCtx.basePath, 'src/email-templates');
     @sql.updateInterested UPDATE interested_users SET regd_at=CURRENT_TIMESTAMP()
 						  WHERE email = ?								
 	@sql.insertInterested INSERT INTO interested_users (email, name, invite_code,
-							who_invited) VALUES (?,?, ?, ?)					
+							who_invited, svc) VALUES (?,?, ?, ?, ?)					
 */
 exports.index = function(req, res, ctx){
     var regId = md5(req.body.email + ":" + ctx.config.app.hashSecret);
@@ -51,7 +51,7 @@ exports.index = function(req, res, ctx){
         } else {
             db
 			.insertInterested(function(){
-				return [req.body.email, req.body.name, regId, req.body.who_invited];
+				return [req.body.email, req.body.name, regId, req.body.who_invited, req.body.svc];
 			})
 			.success(function (rows) {
 				sendEmail(req, res, regId, ctx);

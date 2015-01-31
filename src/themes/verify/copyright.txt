@@ -1,0 +1,9 @@
+  Shelloid Systems LLP
+  All Rights Reserved.
+
+This folder and all its subfolders contain web design files (HTML/CSS/JS/image files) copyrighted to Shelloid Systems LLP.
+These are provided as an example skin of a real system and is not intended to be used in other sites.
+ 
+All the files contained in this folder and all its subfolders herein are, and remains
+the property of Shelloid Systems LLP.  Using these designs and files is 
+forbidden unless prior written permission is obtained from Shelloid Systems LLP

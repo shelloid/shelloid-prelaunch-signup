@@ -35,14 +35,15 @@ function getParameterByName(name) {
 	return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-function submitUserInfo(email, name) {
+function submitUserInfo(email, name, svc) {
 	$("#dialog_email").html(email);
 	if (name == "" || email == "" || !ValidateEmail(email)) {
 		showToast("Please input correct email and username")
 		return;
 	} else {
 		var whoInvited = $.cookie("who-invited");
-		$.post("/interest", {name: name, email: email, who_invited: whoInvited}, function (resp) {
+		$.post("/interest", {name: name, email: email, who_invited: whoInvited,
+		svc: svc}, function (resp) {
 			if (resp.status == 200) {
 				$("#username").val("");
 				$("#email").val("");
@@ -61,7 +62,7 @@ function submitUserInfo(email, name) {
 $(function () {
 	$("#go").click(function (e) {
 		e.preventDefault();
-		submitUserInfo($("#email").val(), $("#username").val());
+		submitUserInfo($("#email").val(), $("#username").val(), $("#svc").val());
 	});
 	var gglink = $("#gglink");
 	if(gglink.length > 0){
@@ -86,6 +87,7 @@ $(function () {
 	var email = getParameterByName("email");
 	var username = getParameterByName("name");
 	var provider = getParameterByName("provider");
+	var svc = $("#svc").val();
 	if(email && email.indexOf("@") > 0){
 		email = email.trim();
 		username = username.trim();
@@ -93,7 +95,7 @@ $(function () {
 			var k = email.indexOf("@");
 			username = firstCaps(email.substring(0,k));
 		}
-		submitUserInfo(email, username);
+		submitUserInfo(email, username, svc);
 	}else if(provider && provider != ""){
 		$( "#no_email_dialog" ).dialog( "open" );						
 	}	
