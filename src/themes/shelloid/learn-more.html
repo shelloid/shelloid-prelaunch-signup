@@ -69,6 +69,10 @@ else document.observe('dom:loaded', initFlyouts);
 								<li id='pg728740534118580326'><a href="index.html" data-membership-required="0" >Home</a></li>
 								<li id="pg622461769913262019"><a href="about.html">About</a></li>
 								<li id='pg622461769913262019'><a href="/learn-more.html#install"  data-membership-required="0" >Install Shelloid</a></li>								
+								
+								<li id='pg622461769913262019'><a href="http://verify.shelloid.com"  data-membership-required="0" >Shelloid Verify</a></li>								
+								
+								
 								<li id='pg559965336946061335'><a href="http://shelloid.org" target="_new" data-membership-required="0" >Community</a></li>
 								<li id='active'><a href="learn-more.html" data-membership-required="0" >Learn More</a></li>								
 								</ul>
@@ -154,6 +158,7 @@ Key features (more being added every day!):
 <li>Named SQL query strings can be declared as annotations and executed using the name.
 <li>Built-in simulator for controlled functional testing of the application/controller logic (work in progress). Simulator will allow specification and verification of temporal properties, controlled flow of time, etc.
 <li>Support for easily configurable UI themes.
+<li>UI themes can be associated with domains, i.e., depending on the domain by which the site is accessed a separate set of files/views can be served. Note that, at the moment, controllers are shared across domains. This results in a limited support for virtual hosting.
 <li>Built in proper error and exception handling that takes care of sending error responses and freeing DB connections.
 <li>Built in simple and versatile sequencing API that avoids callback hell and results in readily understandable code.
 <li>Simple config specification for allowing cross-origin requests (implementation complying with CORS standard).
