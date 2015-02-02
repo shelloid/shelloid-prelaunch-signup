@@ -88,6 +88,13 @@ $(function () {
 	var username = getParameterByName("name");
 	var provider = getParameterByName("provider");
 	var svc = $("#svc").val();
+	if(!provider){
+		parentDomain = window.location.hostname;
+		if(svc == "verify"){
+			parentDomain = parentDomain.substring("verify.".length);
+		}
+		$.cookie("svc", svc, {domain: parentDomain});
+	}
 	if(email && email.indexOf("@") > 0){
 		email = email.trim();
 		username = username.trim();
@@ -95,6 +102,7 @@ $(function () {
 			var k = email.indexOf("@");
 			username = firstCaps(email.substring(0,k));
 		}
+		svc = $.cookie("svc");
 		submitUserInfo(email, username, svc);
 	}else if(provider && provider != ""){
 		$( "#no_email_dialog" ).dialog( "open" );						
