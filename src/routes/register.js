@@ -1,7 +1,7 @@
 /*!
   * Copyright(c) 2015 Shelloid Systems LLP.
  * MIT Licensed
-*/
+ */
 
 var emailTemplates = require('email-templates'),
     Mailgun = require('mailgun-js'),
