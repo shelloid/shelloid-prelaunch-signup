@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Learn More - Simple and secure web application development.</title>
+<title>Learn More - Open source, extensible web application platform for building real-time IoT-enabled applications.
+</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     
@@ -69,8 +70,8 @@ else document.observe('dom:loaded', initFlyouts);
 								<li id='pg728740534118580326'><a href="index.html" data-membership-required="0" >Home</a></li>
 								<li id="pg622461769913262019"><a href="about.html">About</a></li>
 								<li id='pg622461769913262019'><a href="/learn-more.html#install"  data-membership-required="0" >Install Shelloid</a></li>								
-								
-								<li id='pg622461769913262019'><a href="http://verify.shelloid.com"  data-membership-required="0" >Shelloid Verify</a></li>								
+<!--								
+								<li id='pg622461769913262019'><a href="http://verify.shelloid.com"  data-membership-required="0" >Shelloid Verify</a></li>								-->
 								
 								
 								<!--<li id='pg559965336946061335'><a href="http://shelloid.org" target="_new" data-membership-required="0" >Community</a></li>-->
@@ -105,9 +106,14 @@ else document.observe('dom:loaded', initFlyouts);
    			<div id='wsite-content' class='wsite-elements wsite-not-footer'>
 <div class="paragraph" style="text-align:left;"><span style='text-decoration:none; font-style:normal; font-weight:300; color:rgb(142, 142, 142); '><span style="text-decoration:none; font-style:normal; font-weight:300; color:rgb(142, 142, 142); "><span style="text-decoration:none; font-style:normal; font-weight:300; color:rgb(142, 142, 142); "><span style="text-decoration:none; font-style:normal; font-weight:300; color:rgb(142, 142, 142); "><span style="text-decoration:none; font-style:normal; font-weight:300; color:rgb(142, 142, 142); "><font size="5"><strong><span style="text-decoration:none; font-style:normal; font-weight:300; color:rgb(142, 142, 142); "><span style="text-decoration:none; font-style:normal; font-weight:300; color:rgb(142, 142, 142); ">
 <div style="font-size:14pt;color:black;margin-top:-2em">
-Shelloid is an <a href="http://shelloid.org" target="_new"> open source web application server</a> for Node.js. While open sourcing is great for the users, Shelloid goes beyond merely being open source. Shelloid has an open architecture created from ground up, allowing you to easily write extensions that can modify the behaviour of the engine to suit your needs. Many of Shelloid's  built-in features are themselves built as extensions, leading to a relatively small and robust core.
+Shelloid is an <a href="http://shelloid.org">open source</a>, extensible web application platform for building real-time IoT-enabled applications. Shelloid stack is built using cutting-edge technologies such as Node.js (for the web tier), MongoDB (analytics DB), and Clojure (real-time stream computations). Real-time events from raw data can be generating using simple, declarative SQL-like stream queries (US Patent Pending). Shelloid enables web applications to easily generate and process real-time events from IoT sources such as the Nest thermostat, Fitbit/Jawbone fitness bands, and many more.
+
+
 <p>
-Our vision is to simplify the development of secure and robust web applications and services, improving programmer productivity and enabling quick time-to-market. Shelloid takes care of the infrastructure logic and lets you focus on your business logic, leading to quick time to market for your business-critical applications. Shelloid is open sourced under LGPL license, allowing you to run your commercial closed source applications on the top of it.
+Our vision is to simplify the development of secure and robust IoT-enabled web applications and web services, improving programmer productivity and enabling quick time-to-market. Shelloid takes care of the infrastructure logic and lets you focus on your business logic, leading to quick time to market for your business-critical applications. Shelloid is open sourced under LGPL license, allowing you to run your commercial closed source applications on the top of it.
+
+<p>
+While open sourcing is great for the users, Shelloid goes beyond merely being open source. Shelloid has an open architecture created from ground up, allowing you to easily write extensions that can modify the behaviour of the engine to suit your needs. Many of Shelloid's  built-in features are themselves built as extensions, leading to a relatively small and robust core.
 
 <!--<p>In order to improve programmer productivity and make your code readable, maintainable, and secure, Shelloid employs the following foundational principles:
 <ul>
@@ -117,7 +123,9 @@ Our vision is to simplify the development of secure and robust web applications 
 <li>Secure defaults.
 </ul>-->
 <p>
-Our documentation is being set up at <a href="http://shelloid.github.io" target="_new">http://shelloid.github.io</a> (please bear with us for a few days while we set up the doc pages).
+Our documentation is being set up at <a href="http://shelloid.github.io" target="_new">http://shelloid.github.io</a> (please bear with us for a few days while we set up the doc pages). 
+<p>
+Shelloid began its life as a web application platform integrating Node.js (for web and realtime) and Clojure (for concurrent computing) - so some of the older documentation/presentations may still refer to this older version.
 <p id="install"><u>Videos and Presentations</u><br/>
 <a href="https://www.youtube.com/watch?v=h8WjSoV0iJA" target="_new">
 Introduction to Shelloid.
@@ -127,7 +135,7 @@ Auto restarts</a>
 <p>
 <u>Installation</u>
 </p>
-Shelloid is available as <a href="https://www.npmjs.com/package/shelloid" target="_new">an npm package</a> which can be easily installed with a single command.<br/>
+Shelloid is available as <a href="https://www.npmjs.com/package/shelloid" target="_new">an npm package</a> which can be easily installed with a single command. Please note that the IoT platform is still work in progress - so the current npm package is still the older version.<br/>
 Linux/Unix:<br/>
 sudo npm install -g shelloid <br/>
 Windows:<br/>
@@ -142,7 +150,7 @@ Application will be initialized in the app-name folder.<br/>
 shelloid app-name
 <p>
 
-Key features (more being added every day!):
+Web application stack features:
 
 <ul>
 <li>Use of declarative annotations instead of writing code for many useful functions.
